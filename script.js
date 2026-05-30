@@ -1,4 +1,4 @@
-fetch("users.json")
+fetch("https://vls-amit.github.io/users.json")
   .then(res => res.json())
   .then(users => {
 
