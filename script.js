@@ -6,16 +6,16 @@ fetch("users.json")
     // CONTAINER
     // =========================
 
-    let container =
-  document.getElementById("bubbleContainer");
+   let container = document.querySelector("#bubbleContainer");
 
-  if (!container) {
-    container = document.createElement("div");
-    container.id = "bubbleContainer";
-    container.className = "bubble-container";
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "bubbleContainer";
 
-    document.body.appendChild(container);
-  }
+      document.body.appendChild(container);
+    }
+
+    console.log("Final container:", container);
 
     // =========================
     // SHOW LATEST 3 USERS
@@ -256,6 +256,9 @@ fetch("users.json")
 
 
       // ADD TO SCREEN
+      console.log("container =", container);
+      console.log("bubble =", bubble);
+
       container.appendChild(bubble);
 
     });
