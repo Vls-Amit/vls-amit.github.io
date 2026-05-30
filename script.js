@@ -6,10 +6,16 @@ fetch("users.json")
     // CONTAINER
     // =========================
 
-    const container =
-      document.getElementById("bubbleContainer");
+    let container =
+  document.getElementById("bubbleContainer");
 
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "bubbleContainer";
+    container.className = "bubble-container";
 
+    document.body.appendChild(container);
+  }
 
     // =========================
     // SHOW LATEST 3 USERS
