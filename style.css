@@ -1,0 +1,364 @@
+/* =========================
+   RESET
+========================= */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: #111;
+
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   BUBBLE CONTAINER
+========================= */
+
+.bubble-container {
+  position: fixed;
+
+  bottom: 5vh;
+  left: 3vw;
+
+  z-index: 99999;
+}
+
+
+/* =========================
+   BUBBLES
+========================= */
+
+.bubble {
+  position: absolute;
+
+  animation: hover 3s ease-in-out infinite;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   BUBBLE IMAGE
+========================= */
+
+.bubble img {
+  width: clamp(20px, 8vw, 45px);
+  height: clamp(20px, 8vw, 45px);
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+
+/* =========================
+   FLOAT ANIMATION
+========================= */
+
+@keyframes hover {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+  .bubble img {
+    width: 35px;
+    height: 35px;
+  }
+
+}
+
+
+/* =========================
+   POPUP WRAPPER
+========================= */
+
+.popup {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  bottom: -100%;
+
+  padding: 16px;
+
+  z-index: 100000;
+
+  transition:
+    bottom 0.3s ease,
+    opacity 0.3s ease;
+
+  opacity: 0;
+}
+
+
+/* =========================
+   SHOW POPUP
+========================= */
+
+.popup.show {
+  bottom: 0;
+  opacity: 1;
+}
+
+
+/* =========================
+   POPUP CONTENT
+========================= */
+
+.popup-content {
+
+  background: rgba(20,20,20,0.95);
+
+  backdrop-filter: blur(10px);
+
+  border-radius: 28px 28px 0 0;
+
+  padding: 16px;
+
+  color: white;
+
+  box-shadow:
+    0 -5px 25px rgba(0,0,0,0.4);
+
+}
+
+
+/* =========================
+   DRAG HANDLE
+========================= */
+
+.drag-handle {
+
+  width: 45px;
+  height: 5px;
+
+  background: #666;
+
+  border-radius: 999px;
+
+  margin: 0 auto 18px;
+
+}
+
+
+/* =========================
+   USER SECTION
+========================= */
+
+.popup-user {
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   USER IMAGE
+========================= */
+
+.popup-user img {
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  flex-shrink: 0;
+
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.popup-text h3 {
+
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 600;
+
+}
+
+
+.liked-text {
+
+  color: #aaa;
+
+  font-weight: normal;
+
+}
+
+
+#popupMsg {
+
+  margin-top: 4px;
+
+  color: #bbb;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+
+}
+
+
+/* =========================
+   EMOJI ROW
+========================= */
+
+.emoji-row {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   EMOJI BUTTONS
+========================= */
+
+.emoji-btn {
+
+  background: transparent;
+
+  border: none;
+
+  font-size: 30px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+
+}
+
+
+.emoji-btn:hover {
+  opacity: 0.8;
+}
+
+
+.emoji-btn:active {
+  transform: scale(1.2);
+}
+
+
+/* =========================
+   MESSAGE BAR
+========================= */
+
+.message-bar {
+
+  display: flex;
+
+  gap: 10px;
+
+}
+
+
+/* =========================
+   MESSAGE INPUT
+========================= */
+
+#msgInput {
+
+  flex: 1;
+
+  background: #2a2a2a;
+
+  border: none;
+  outline: none;
+
+  color: white;
+
+  padding: 14px 16px;
+
+  border-radius: 999px;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+
+}
+
+
+#msgInput::placeholder {
+  color: #888;
+}
+
+
+/* =========================
+   SEND BUTTON
+========================= */
+
+#sendBtn {
+
+  border: none;
+
+  background: #25D366;
+
+  color: white;
+
+  padding: 0 18px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+
+}
+
+
+#sendBtn:hover {
+  opacity: 0.9;
+}
+
+
+#sendBtn:active {
+  transform: scale(0.97);
+}
