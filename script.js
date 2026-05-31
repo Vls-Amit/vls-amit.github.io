@@ -43,22 +43,10 @@ fetch("https://vls-amit.github.io/users.json")
     // =========================
 
     const positions = [
-
-      { left: 0, bottom: 0 },
-
-      {
-        left: gap,
-        bottom: gap * 0.6
-      },
-
-      {
-        left: gap * 2,
-        bottom: 0
-      }
-
-    ];
-
-
+  { left: 0,  bottom: 0  },  // bottom-left
+  { left: 40, bottom: 0  },  // bottom-right
+  { left: 20, bottom: 35 }   // top-center
+];
 
     // =========================
     // CREATE POPUP
@@ -141,16 +129,6 @@ fetch("https://vls-amit.github.io/users.json")
 
       bubble.style.bottom =
         positions[index].bottom + "px";
-
-
-
-      // ANIMATION
-      bubble.style.animationDuration =
-        `${2.5 + Math.random()}s`;
-
-      bubble.style.animationDelay =
-        `${Math.random()}s`;
-
 
 
       // IMAGE
