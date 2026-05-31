@@ -17,10 +17,14 @@ body {
 ========================= */
 
 .bubble-container {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  z-index: 999999;
+  position: fixed !important;
+
+  left: 20px !important;
+  bottom: 20px !important;
+
+  z-index: 2147483647 !important;
+
+  pointer-events: auto;
 }
 
 
