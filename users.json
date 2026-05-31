@@ -1,21 +1,21 @@
 [
   {
     "name": "Ravi",
-    "avatar": "ravi.jpg",
+    "avatar": "https://vls-amit.github.io/ravi.jpg",
     "review": "Yo! I've bought this 3 months ago, still tastes the same",
     "phone": "919440251081",
     "verified": true
   },
   {
     "name": "Pavan",
-    "avatar": "pavan.jpg",
+    "avatar": "https://vls-amit.github.io/pavan.jpg",
     "review": "Rates this 5 stars broo, very tasty",
     "phone": "918464977896",
     "verified": true
   },
   {
     "name": "Venkat",
-    "avatar": "venkat.jpg",
+    "avatar": "https://vls-amit.github.io/venkat.jpg",
     "review": "I don't like it, tastes like water",
     "phone":"917981576698",
     "verified": true
