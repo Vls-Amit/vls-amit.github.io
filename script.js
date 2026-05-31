@@ -1,3 +1,20 @@
+const style = document.createElement("style");
+
+style.textContent = `
+.bubble-container {
+  position: fixed !important;
+  left: 20px !important;
+  bottom: 20px !important;
+  z-index: 2147483647 !important;
+}
+
+.bubble {
+  position: absolute !important;
+}
+`;
+
+document.head.appendChild(style);
+
 fetch("https://vls-amit.github.io/users.json")
   .then(res => res.json())
   .then(users => {
