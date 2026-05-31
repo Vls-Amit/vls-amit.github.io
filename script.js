@@ -61,8 +61,8 @@ fetch("https://vls-amit.github.io/users.json")
 
     const positions = [
   { left: 0,  bottom: 0  },  // bottom-left
-  { left: 55, bottom: 0  },  // bottom-right
-  { left: 27, bottom: 45 }   // top-center
+  { left: 70, bottom: 0  },  // bottom-right
+  { left: 35, bottom: 60 }   // top-center
 ];
 
     // =========================
