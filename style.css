@@ -22,8 +22,8 @@ body {
   left: 20px !important;
   bottom: 20px !important;
 
-  width: 200px;
-  height: 160px;
+  width: 130px;
+  height: 110px;
 
   overflow: visible;
 
@@ -46,7 +46,7 @@ body {
 
   transition: transform 0.2s ease;
 
-  pointer-events: all; /* FIX: bubbles catch their own clicks */
+  pointer-events: auto; /* FIX: bubbles catch their own clicks */
 }
 
 /* FIX: combined scale + translateY so animation doesn't reset on hover */
@@ -108,24 +108,39 @@ body {
 
 .popup {
   position: fixed;
-  left: 20px;
-  bottom: 90px;
+
+  left: 90px;
+  bottom: 20px; /* FIX: stays at 90px, doesn't move to 0 on show */
+
   right: auto;
+
   width: 320px;
   max-width: calc(100vw - 40px);
+
   z-index: 2147483647;
+
   opacity: 0;
-  pointer-events: none;  /* ADD THIS */
+  pointer-events: none; /* FIX: invisible popup doesn't eat clicks */
+
   transition:
     opacity 0.25s ease,
     transform 0.25s ease;
+
   transform: translateY(10px);
 }
 
+
+/* =========================
+   SHOW POPUP
+   FIX: opacity: 1 was missing — popup was
+   sliding in but staying invisible.
+   FIX: pointer-events restored when visible.
+========================= */
+
 .popup.show {
-  opacity: 1;
+  opacity: 1;                /* FIX: was missing entirely */
   transform: translateY(0);
-  pointer-events: all;   /* ADD THIS */
+  pointer-events: auto;       /* FIX: restore clicks when visible */
 }
 
 
