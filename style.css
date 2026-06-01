@@ -5,15 +5,16 @@
 body {
   margin: 0;
   min-height: 100vh;
-
   background: #111;
-
   font-family: Arial, sans-serif;
 }
 
 
 /* =========================
    BUBBLE CONTAINER
+   FIX: pointer-events none on container
+   so it doesn't block host site clicks.
+   Bubbles re-enable pointer-events themselves.
 ========================= */
 
 .bubble-container {
@@ -21,12 +22,14 @@ body {
   left: 20px !important;
   bottom: 20px !important;
 
-  width: 140px;
-  height: 120px;
+  width: 200px;
+  height: 160px;
 
   overflow: visible;
 
   z-index: 2147483647 !important;
+
+  pointer-events: none; /* FIX: container is transparent to clicks */
 }
 
 
@@ -37,15 +40,18 @@ body {
 .bubble {
   position: absolute;
 
-  animation: hover 3s ease-in-out infinite;
+  animation: bwFloat 3s ease-in-out infinite; /* FIX: renamed from 'hover' to avoid collisions */
 
   cursor: pointer;
 
   transition: transform 0.2s ease;
+
+  pointer-events: all; /* FIX: bubbles catch their own clicks */
 }
 
+/* FIX: combined scale + translateY so animation doesn't reset on hover */
 .bubble:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-3px);
 }
 
 
@@ -60,16 +66,23 @@ body {
   border-radius: 50%;
 
   object-fit: cover;
+
+  border: 2px solid #fff;
+
+  display: block;
+
+  pointer-events: none; /* FIX: img inside bubble shouldn't steal the click */
 }
 
 
 /* =========================
    FLOAT ANIMATION
+   FIX: renamed from 'hover' to 'bwFloat'
 ========================= */
 
-@keyframes hover {
+@keyframes bwFloat {
   0%   { transform: translateY(0); }
-  50%  { transform: translateY(-3px); }
+  50%  { transform: translateY(-5px); }
   100% { transform: translateY(0); }
 }
 
@@ -79,24 +92,25 @@ body {
 ========================= */
 
 @media (max-width: 500px) {
-
   .bubble img {
     width: 35px;
     height: 35px;
   }
-
 }
 
 
 /* =========================
    POPUP WRAPPER
+   FIX: pointer-events none when hidden,
+   so it doesn't block the host page.
+   FIX: opacity stays 0 until .show
 ========================= */
 
 .popup {
   position: fixed;
 
   left: 20px;
-  bottom: 90px;
+  bottom: 90px; /* FIX: stays at 90px, doesn't move to 0 on show */
 
   right: auto;
 
@@ -106,6 +120,7 @@ body {
   z-index: 2147483647;
 
   opacity: 0;
+  pointer-events: none; /* FIX: invisible popup doesn't eat clicks */
 
   transition:
     opacity 0.25s ease,
@@ -117,11 +132,15 @@ body {
 
 /* =========================
    SHOW POPUP
+   FIX: opacity: 1 was missing — popup was
+   sliding in but staying invisible.
+   FIX: pointer-events restored when visible.
 ========================= */
 
 .popup.show {
-  bottom: 0;
+  opacity: 1;                /* FIX: was missing entirely */
   transform: translateY(0);
+  pointer-events: all;       /* FIX: restore clicks when visible */
 }
 
 
@@ -130,20 +149,12 @@ body {
 ========================= */
 
 .popup-content {
-
-  background: rgba(20,20,20,0.95);
-
+  background: rgba(20, 20, 20, 0.95);
   backdrop-filter: blur(10px);
-
   border-radius: 18px;
-
   padding: 16px;
-
   color: white;
-
-  box-shadow:
-    0 -5px 25px rgba(0,0,0,0.4);
-
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -161,14 +172,10 @@ body {
 ========================= */
 
 .popup-user {
-
   display: flex;
   align-items: center;
-
   gap: 12px;
-
   margin-bottom: 12px;
-
 }
 
 
@@ -177,16 +184,11 @@ body {
 ========================= */
 
 .popup-user img {
-
   width: 42px;
   height: 42px;
-
   border-radius: 50%;
-
   object-fit: cover;
-
   flex-shrink: 0;
-
 }
 
 
@@ -195,36 +197,26 @@ body {
 ========================= */
 
 .popup-text h3 {
-
   margin: 0;
-
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-
 }
 
 #popupMsg {
-
   margin-top: 2px;
-
   color: #bbb;
-
   font-size: 13px;
-
   line-height: 1.4;
-
 }
+
 
 /* =========================
    MESSAGE BAR
 ========================= */
 
 .message-bar {
-
   display: flex;
-
   gap: 10px;
-
 }
 
 
@@ -233,26 +225,16 @@ body {
 ========================= */
 
 #msgInput {
-
   flex: 1;
-
   background: #2a2a2a;
-
   border: none;
   outline: none;
-
   color: white;
-
   padding: 10px 14px;
-
   border-radius: 999px;
-
   font-size: 14px;
-
   box-sizing: border-box;
-
 }
-
 
 #msgInput::placeholder {
   color: #888;
@@ -264,32 +246,21 @@ body {
 ========================= */
 
 #sendBtn {
-
   border: none;
-
   background: #25D366;
-
   color: white;
-
   padding: 0 18px;
-
   border-radius: 999px;
-
   cursor: pointer;
-
   font-weight: 600;
-
   transition:
     transform 0.15s ease,
     opacity 0.2s ease;
-
 }
-
 
 #sendBtn:hover {
   opacity: 0.9;
 }
-
 
 #sendBtn:active {
   transform: scale(0.97);
