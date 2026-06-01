@@ -93,21 +93,25 @@ body {
 ========================= */
 
 .popup {
+  position: fixed;
+
   left: 20px;
+  bottom: 90px;
+
   right: auto;
+
   width: 320px;
   max-width: calc(100vw - 40px);
-  bottom: 80px;
 
-  padding: 16px;
-
-  z-index: 100000;
-
-  transition:
-    bottom 0.3s ease,
-    opacity 0.3s ease;
+  z-index: 2147483647;
 
   opacity: 0;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+
+  transform: translateY(10px);
 }
 
 
@@ -117,7 +121,7 @@ body {
 
 .popup.show {
   bottom: 0;
-  opacity: 1;
+  transform: translateY(0);
 }
 
 
@@ -131,7 +135,7 @@ body {
 
   backdrop-filter: blur(10px);
 
-  border-radius: 28px 28px 0 0;
+  border-radius: 18px;
 
   padding: 16px;
 
@@ -163,7 +167,7 @@ body {
 
   gap: 12px;
 
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 
 }
 
@@ -199,16 +203,6 @@ body {
 
 }
 
-
-.liked-text {
-
-  color: #aaa;
-
-  font-weight: normal;
-
-}
-
-
 #popupMsg {
 
   margin-top: 2px;
@@ -220,53 +214,6 @@ body {
   line-height: 1.4;
 
 }
-
-
-/* =========================
-   EMOJI ROW
-========================= */
-
-.emoji-row {
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 20px;
-
-}
-
-
-/* =========================
-   EMOJI BUTTONS
-========================= */
-
-.emoji-btn {
-
-  background: transparent;
-
-  border: none;
-
-  font-size: 30px;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    opacity 0.2s ease;
-
-}
-
-
-.emoji-btn:hover {
-  opacity: 0.8;
-}
-
-
-.emoji-btn:active {
-  transform: scale(1.2);
-}
-
 
 /* =========================
    MESSAGE BAR
