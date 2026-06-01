@@ -108,39 +108,24 @@ body {
 
 .popup {
   position: fixed;
-
   left: 20px;
-  bottom: 90px; /* FIX: stays at 90px, doesn't move to 0 on show */
-
+  bottom: 90px;
   right: auto;
-
   width: 320px;
   max-width: calc(100vw - 40px);
-
   z-index: 2147483647;
-
   opacity: 0;
-  pointer-events: none; /* FIX: invisible popup doesn't eat clicks */
-
+  pointer-events: none;  /* ADD THIS */
   transition:
     opacity 0.25s ease,
     transform 0.25s ease;
-
   transform: translateY(10px);
 }
 
-
-/* =========================
-   SHOW POPUP
-   FIX: opacity: 1 was missing — popup was
-   sliding in but staying invisible.
-   FIX: pointer-events restored when visible.
-========================= */
-
 .popup.show {
-  opacity: 1;                /* FIX: was missing entirely */
+  opacity: 1;
   transform: translateY(0);
-  pointer-events: all;       /* FIX: restore clicks when visible */
+  pointer-events: all;   /* ADD THIS */
 }
 
 
