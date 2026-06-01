@@ -122,16 +122,11 @@ fetch("https://vls-amit.github.io/users.json")
 
     `;
 
-
-
     document.body.appendChild(popup);
     popup.querySelector(".close-popup")
   .addEventListener("click", () => {
     popup.classList.remove("show");
   });
-
-
-
 
     // =========================
     // CREATE BUBBLES
