@@ -1,3 +1,20 @@
+const style = document.createElement("style");
+
+style.textContent = `
+.bubble-container {
+  position: fixed !important;
+  left: 20px !important;
+  bottom: 20px !important;
+  z-index: 2147483647 !important;
+}
+
+.bubble {
+  position: absolute !important;
+}
+`;
+
+document.head.appendChild(style);
+
 fetch("https://vls-amit.github.io/users.json")
   .then(res => res.json())
   .then(users => {
@@ -45,8 +62,8 @@ fetch("https://vls-amit.github.io/users.json")
 
     const positions = [
   { left: 0,  bottom: 0  },  // bottom-left
-  { left: 40, bottom: 0  },  // bottom-right
-  { left: 20, bottom: 35 }   // top-center
+  { left: 70, bottom: 0  },  // bottom-right
+  { left: 35, bottom: 60 }   // top-center
 ];
 
     // =========================
