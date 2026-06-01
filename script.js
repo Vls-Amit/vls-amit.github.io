@@ -9,11 +9,12 @@ fetch("https://vls-amit.github.io/users.json")
    let container = document.querySelector("#bubbleContainer");
 
     if (!container) {
-      container = document.createElement("div");
-      container.id = "bubbleContainer";
+  container = document.createElement("div");
+  container.id = "bubbleContainer";
+  container.className = "bubble-container";
 
-      document.body.appendChild(container);
-    }
+  document.body.appendChild(container);
+}
 
     console.log("Final container:", container);
 
