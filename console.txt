@@ -1,17 +1,6 @@
 (() => {
-  const version = Date.now();
-
-  document.getElementById("amit-widget-script")?.remove();
-  document.getElementById("amit-widget-style")?.remove();
-
-  const link = document.createElement("link");
-  link.id = "amit-widget-style";
-  link.rel = "stylesheet";
-  link.href = `https://vls-amit.github.io/style.css?v=${version}`;
-  document.head.appendChild(link);
-
-  const script = document.createElement("script");
-  script.id = "amit-widget-script";
-  script.src = `https://vls-amit.github.io/script.js?v=${version}`;
-  document.body.appendChild(script);
+  const s = document.createElement("script");
+  s.src =
+    "https://vls-amit.github.io/script.js?v=" + Date.now();
+  document.body.appendChild(s);
 })();

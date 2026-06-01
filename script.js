@@ -1,3 +1,8 @@
+const BASE = "https://vls-amit.github.io";
+link.href =
+  `${BASE}/style.css?v=${Date.now()}`;
+fetch(`${BASE}/users.json`)
+
 const style = document.createElement("style");
 
 style.textContent = `
