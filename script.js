@@ -81,6 +81,8 @@ fetch("https://vls-amit.github.io/users.json")
 
       <div class="popup-content">
 
+      <button class="close-popup">&times;</button>
+
         <div class="drag-handle"></div>
 
 
@@ -123,6 +125,10 @@ fetch("https://vls-amit.github.io/users.json")
 
 
     document.body.appendChild(popup);
+    popup.querySelector(".close-popup")
+  .addEventListener("click", () => {
+    popup.classList.remove("show");
+  });
 
 
 
