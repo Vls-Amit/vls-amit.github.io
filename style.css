@@ -79,56 +79,11 @@ body {
   100% { transform: translateY(0); }
 }
 
-
 /* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-
-  .popup {
-    left: 70px;
-    bottom: 15px;
-
-    width: 150px;
-    max-width: 200px;
-  }
-
-  .popup-content {
-    padding: 12px;
-  }
-
-  .popup-user img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .popup-text h3 {
-    font-size: 14px;
-  }
-
-  .message-bar{
-    flex-direction: column;
-  }
-
-  #popupMsg {
-    font-size: 11px;
-    line-height: 1.3;
-  }
-
-  #msgInput {
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-
-  #sendBtn {
-    width: 100%;
-    padding: 12px;
-    background: green;
-    border-radius: 12px;
-    font-size: 14px;
-  }
-
   .bubble-container {
     width: 100px;
     height: 90px;
@@ -138,8 +93,8 @@ body {
     width: 32px;
     height: 32px;
   }
-}
 
+}
 /* =========================
    POPUP WRAPPER
    FIX: pointer-events none when hidden,
@@ -149,55 +104,31 @@ body {
 
 .popup {
   position: fixed;
-
-  left: 90px;
-  bottom: 20px; /* FIX: stays at 90px, doesn't move to 0 on show */
-
-  right: auto;
-
-  width: 320px;
-  max-width: calc(100vw - 40px);
-
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  width: 100%;
   z-index: 2147483647;
-
-  opacity: 0;
-  pointer-events: none; /* FIX: invisible popup doesn't eat clicks */
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-
-  transform: translateY(10px);
+  opacity: 1;
+  pointer-events: none;
+  transition: bottom 0.3s ease;
 }
-
-
-/* =========================
-   SHOW POPUP
-   FIX: opacity: 1 was missing — popup was
-   sliding in but staying invisible.
-   FIX: pointer-events restored when visible.
-========================= */
 
 .popup.show {
-  opacity: 1;                /* FIX: was missing entirely */
-  transform: translateY(0);
-  pointer-events: auto;       /* FIX: restore clicks when visible */
+  bottom: 0;
+
+  pointer-events: auto;
 }
 
-
-/* =========================
-   POPUP CONTENT
-========================= */
 
 .popup-content {
-  background: rgba(20, 20, 20, 0.95);
+  background: rgba(20,20,20,0.98);
   backdrop-filter: blur(10px);
-  border-radius: 18px;
+  border-radius: 20px 20px 0 0;
   padding: 16px;
   color: white;
-  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.4);
+  min-height: 180px;
 }
-
 
 /* =========================
    DRAG HANDLE
