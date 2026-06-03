@@ -126,6 +126,7 @@ fetch("https://vls-amit.github.io/users.json")
     popup.querySelector(".close-popup")
   .addEventListener("click", () => {
     popup.classList.remove("show");
+    container.style.opacity = "1";
   });
 
     // =========================
@@ -194,6 +195,7 @@ fetch("https://vls-amit.github.io/users.json")
 
         // SHOW POPUP
         popup.classList.add("show");  
+        container.style.opacity = "0";
 
         // =========================
         // SEND BUTTON
@@ -220,25 +222,21 @@ fetch("https://vls-amit.github.io/users.json")
             const waLink =
               `https://api.whatsapp.com/send?phone=${user.phone}&text=${encoded}`;
 
-
-
             console.log(waLink);
 
+            const isMobile =
+            /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-
-            window.open(
-              waLink,
-              "_blank"
-            );
-
-
+          if (isMobile) {
+            window.location.href = waLink;
+          } else {
+            window.open(waLink, "_blank");
+          }
 
             // CLEAR INPUT
             input.value = "";
 
           };
-
-
 
         // =========================
         // ENTER KEY SEND
@@ -268,21 +266,15 @@ fetch("https://vls-amit.github.io/users.json")
 
     });
 
-
-
-
     // =========================
     // CLICK OUTSIDE TO CLOSE
     // =========================
 
     popup.addEventListener("click", (e) => {
-
-      if (e.target === popup) {
-
-        popup.classList.remove("show");
-
-      }
-
-    });
+  if (e.target === popup) {
+    popup.classList.remove("show");
+    container.style.opacity = "1";
+  }
+});
 
   });
