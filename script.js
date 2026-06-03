@@ -139,6 +139,14 @@ fetch("https://vls-amit.github.io/users.json")
         document.createElement("div");
 
       bubble.className = "bubble";
+      const animations = [
+      "float1",
+      "float2",
+      "float3"
+     ];
+
+      bubble.style.animation =
+      `${animations[index]} ${2 + Math.random() * 2}s ease-in-out infinite`;
 
 
 
